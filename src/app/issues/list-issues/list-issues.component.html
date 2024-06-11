@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h2>Lista de Issues</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titutlo</th>
+          <th>Descripcion</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (issue of issues; track $index) {
+        <tr>
+          <td>{{ issue._id }}</td>
+          <td>{{ issue.title}}</td>
+          <td>{{issue.description }}</td>
+          <td>{{issue.status }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editIssue( issue._id)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteIssue( issue._id)">Eliminar</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
