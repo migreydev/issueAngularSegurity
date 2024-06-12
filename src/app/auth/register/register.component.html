@@ -8,6 +8,9 @@
           <label class="col-sm-3 col-form-label">Nombre</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" placeholder="Nombre del usuario" formControlName="name">
+            @if(myRegistro.get('name')?.invalid && myRegistro.get('name')?.touched){
+              <span class="text-danger">name es requerido</span>
+            }
           </div>
         </div>
   
@@ -15,6 +18,9 @@
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
             <input type="email" class="form-control" placeholder="Email del usuario" formControlName="email">
+            @if(myRegistro.get('email')?.invalid && myRegistro.get('email')?.touched){
+              <span class="text-danger">email es requerido</span>
+            }
           </div>
         </div>
   
@@ -22,6 +28,9 @@
           <label class="col-sm-3 col-form-label">Login</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" placeholder="Login del usuario" formControlName="login">
+            @if(myRegistro.get('login')?.invalid && myRegistro.get('login')?.touched){
+              <span class="text-danger">login es requerido</span>
+            }
           </div>
         </div>
   
@@ -29,6 +38,9 @@
           <label class="col-sm-3 col-form-label">Contraseña</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" placeholder="Contraseña del usuario" formControlName="password">
+            @if(myRegistro.get('password')?.invalid && myRegistro.get('password')?.touched){
+              <span class="text-danger">{{this.msgPassword}}</span>
+            }
           </div>
         </div>
   

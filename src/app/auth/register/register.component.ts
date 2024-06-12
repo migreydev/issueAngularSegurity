@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit{
 
 
   ngOnInit(): void {
-  
+    
   }
 
   myRegistro : FormGroup = this.fb.group({
@@ -28,6 +28,19 @@ export class RegisterComponent implements OnInit{
     password: ['', [Validators.required, Validators.minLength(6)]],
     role: ['USER_ROLE']
   })
+
+  get msgPassword() {
+    const error = this.myRegistro.get("password")?.errors;
+
+    if(error){
+      if (error["required"]) {
+        return "password es un campo requerido"
+      }else if (error["pattern"]) {
+        return `La password debe tener al menos ${error["minlength"].requiredLength} caracteres`;
+      }
+    }
+      return "";
+  }
 
   onSubmit(){
     if(this.myRegistro.valid){
@@ -42,6 +55,8 @@ export class RegisterComponent implements OnInit{
           console.error('Error en el registro:', error);
         }
       })
+    }else {
+      this.myRegistro.markAllAsTouched();
     }
   }
 
