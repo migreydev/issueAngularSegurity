@@ -4,7 +4,7 @@
         <h2 class="text-center text-dark mt-5">Login</h2>
         <div class="card my-5">
 
-          <form 
+          <form (ngSubmit)="onSubmit()"
             class="card-body cardbody-color p-lg-5"
             >
 
@@ -20,6 +20,8 @@
                 id="email" 
                 aria-describedby="emailHelp"
                 placeholder="Email"
+                name="email"
+                [(ngModel)]="user.email"
                 >
             </div>
             <div class="mb-3">
@@ -28,6 +30,8 @@
                 class="form-control" 
                 id="password" 
                 placeholder="password"
+                name="password"
+                [(ngModel)]="user.password"
                 >
             </div>
             <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button></div>

@@ -10,3 +10,10 @@ export interface Issue {
     status:      string;
     __v:         number;
 }
+
+export interface MainRespuesta {
+    issue: Issue;
+}
+
+
+

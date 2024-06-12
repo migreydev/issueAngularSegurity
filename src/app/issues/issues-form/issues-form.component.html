@@ -1,6 +1,7 @@
-<div class="container mt-5">
-    <h2 class="mb-4">Add Issue</h2>
-    <form>
+@if(editmode){
+  <div class="container mt-5">
+    <h2 class="mb-4">Edit Issue</h2>
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group mb-3">
         <label for="title">Título</label>
         <input
@@ -9,6 +10,7 @@
           class="form-control"
           name="title"
           placeholder="Ingrese el título del issue"
+          [(ngModel)]="issueEdit.title"
         />
       </div>
       <div class="form-group mb-3">
@@ -19,6 +21,48 @@
           name="description"
           rows="5"
           placeholder="Ingrese la descripción del issue"
+          [(ngModel)]="issueEdit.description"
+        ></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="status" class="form-label">Estado:</label>
+        <select class="form-select" id="status" name="status" [(ngModel)]="issueEdit.status">
+          <option value="abierta">Abierta</option>
+          <option value="en proceso">En Proceso</option>
+          <option value="cerrada">Cerrada</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-warning">
+        Add Issue
+      </button>
+    </form>
+  </div>
+  
+}@else {
+<div class="container mt-5">
+    <h2 class="mb-4">Add Issue</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="title">Título</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          name="title"
+          placeholder="Ingrese el título del issue"
+          [(ngModel)]="issue.title"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="description">Descripción</label>
+        <textarea
+          id="description"
+          class="form-control"
+          name="description"
+          rows="5"
+          placeholder="Ingrese la descripción del issue"
+          [(ngModel)]="issue.description"
         ></textarea>
       </div>
       <button type="submit" class="btn btn-primary">
@@ -26,4 +70,4 @@
       </button>
     </form>
   </div>
-  
+}

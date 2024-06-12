@@ -17,10 +17,16 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
+          @if(!this.isLoggedIn()){
             <li class="nav-item">
               <a class="nav-link" routerLink="/auth/login">Login</a>
             </li>
-          </ul>
+          }@else{
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Sign out</a>
+            </li>
+          }
+        </ul>
       </div>
     </div>
   </nav>

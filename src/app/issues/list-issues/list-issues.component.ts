@@ -37,7 +37,15 @@ export class ListIssuesComponent implements OnInit{
   }
 
   deleteIssue(id: string){
-
+    this.issueService.deleteIssue(id).subscribe({
+      next: () =>{
+        this.getAllIssues();
+        this.router.navigate(['issues'])
+      },
+      error: error =>{
+        console.error('Error al eliminar la issue', error);
+      }
+    })
   }
 
 }
