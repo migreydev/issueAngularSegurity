@@ -12,10 +12,17 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   private url ='http://localhost:3000/auth/login';
+  private urlRegistro = 'http://localhost:3000/api/users'
   private user : User = {name:'',email:'',login:'',role:'',state:false,uid:''};
 
   public get token(): string{
     return sessionStorage.getItem("token")||'';
+  }
+
+  register(name : string, email: string, login: string, password: string, role: string){
+    const newUser: User = { name, email, login, role, state: false, uid: '' };
+    return this.http.post<Main>(this.urlRegistro, { ...newUser, password });
+
   }
 
   login(email: string, password: string): Observable<Main> {
@@ -40,4 +47,6 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.token;
   }
+
+
 }

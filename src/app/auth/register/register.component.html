@@ -3,7 +3,7 @@
       <h2 class="text-center">Registro</h2>
       <hr>
   
-      <form>
+      <form [formGroup]="myRegistro" (ngSubmit)="onSubmit()">
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Nombre</label>
           <div class="col-sm-9">
@@ -29,13 +29,6 @@
           <label class="col-sm-3 col-form-label">Contraseña</label>
           <div class="col-sm-9">
             <input type="password" class="form-control" placeholder="Contraseña del usuario" formControlName="password">
-          </div>
-        </div>
-  
-        <div class="mb-3 row">
-          <label class="col-sm-3 col-form-label">Confirmar contraseña</label>
-          <div class="col-sm-9">
-            <input type="password" class="form-control" placeholder="Confirmar contraseña del usuario" formControlName="confirmPassword">
           </div>
         </div>
   
